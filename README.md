@@ -1,3 +1,3 @@
 # APLIKACJA W REACT JS
 
-![Podgląd aplikacji]{./screenshots/apka.png}
+![Podgląd aplikacji](./screenshots/apka.png)
