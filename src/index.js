@@ -7,19 +7,21 @@ import { Dashboard } from "./pages/dashboard/dashboard";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Users } from "./pages/users/users";
 import { NewsDetails } from "./pages/newsDetails/newsDetails";
+import { ThemeProvider } from "./context/themecontext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
         <Nav />
         <Routes>
-
-          <Route path="/" element={<App/>}></Route>
-          <Route path="/dashboard" element={<Dashboard/>}></Route>
-          <Route path="/users" element={<Users/>}></Route>
-          <Route path="/news/:slug" element={<NewsDetails/>}></Route>
+          <Route path="/" element={<App />}></Route>
+          <Route path="/dashboard" element={<Dashboard />}></Route>
+          <Route path="/users" element={<Users />}></Route>
+          <Route path="/news/:slug" element={<NewsDetails />}></Route>
         </Routes>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ThemeProvider>
   </React.StrictMode>,
 );

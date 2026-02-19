@@ -1,8 +1,11 @@
 import "./App.css";
 import { News } from "./components/news/news";
-import { Nav } from "./components/nav/nav";
+import { useContext } from "react";
+import { ThemeContext } from "./context/themecontext";
 
 function App() {
+
+   const { theme } = useContext(ThemeContext);
   const name = "Kacper";
 
   const newsList = [
@@ -39,7 +42,7 @@ function App() {
   ];
 
   return (
-    <>
+    <div className={theme}>
 
       <h1 className="animated-title">HELLO {name}!</h1>
 
@@ -52,7 +55,7 @@ function App() {
           ></News>
         ))}
       </main>
-    </>
+    </div>
   );
 }
 

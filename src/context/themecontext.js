@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-export const ThemeProvider = createContext();
+export const ThemeContext = createContext();
 
 //teranry opaerator
 export function ThemeProvider ({ children  }) {

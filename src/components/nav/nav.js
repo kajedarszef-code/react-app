@@ -1,10 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import "./nav.css";
+import { useContext } from "react";
+import { ThemeContext } from "../../context/themecontext";
+
 
 export function Nav() {
-  const handleInput = (e) => {
-    console.log("kliknięto: ", e.target.value);
-  };
+  const {theme, toogleTheme} = useContext(ThemeContext);
+
+
 
   const navLinks = [
     {
@@ -24,8 +27,13 @@ export function Nav() {
     },
   ];
 
+  const handleInput = (e) => {
+    console.log("kliknięto: ", e.target.value);
+  };
+
   return (
     <nav>
+    <nav className={theme}>
       <span>
         <a href="/">
           <i className="fa-brands fa-apple"></i>
@@ -33,6 +41,16 @@ export function Nav() {
       </span>
 
       <ul>
+        <li>
+
+        <button className="theme-btn" onClick={toogleTheme}>
+            {theme === "light" ? (
+              <i className="fa-solid fa-moon"></i>
+            ) : (
+              <i className="fa-solid fa-sun"></i>
+            )}
+          </button>
+          </li>
         <li>
           <input placeholder="search" onChange={handleInput}></input>
         </li>
@@ -48,6 +66,7 @@ export function Nav() {
           </li>
         ))}
       </ul>
+    </nav>
     </nav>
   );
 }
