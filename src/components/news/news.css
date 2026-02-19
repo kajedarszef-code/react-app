@@ -1,0 +1,248 @@
+/* news.css */
+
+.news {
+  position: relative;
+  /* glass */
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  /* shape + spacing */
+  border-radius: 18px;
+  padding: 18px 18px 16px;
+  width: min(520px, 92vw);
+
+  /* depth */
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  /* layout */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+
+  /* subtle glow */
+  position: relative;
+  overflow: hidden;
+
+  /* text */
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* dekoracyjny "blik" */
+.news::before {
+  content: "";
+  position: absolute;
+  inset: -60% -40% auto auto;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0) 60%
+  );
+  transform: rotate(18deg);
+  pointer-events: none;
+}
+
+/* delikatna poświata przy hover */
+.news::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.02)
+  );
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+}
+
+.news:hover::after {
+  opacity: 1;
+}
+
+.news {
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    border-color 200ms ease;
+}
+
+.news:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+/* tytuł */
+.news h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  line-height: 1.2;
+
+  /* fajny "glass" gradient na tekście */
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.65)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* opis */
+.news p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* przyciski */
+.news button {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.92);
+
+  border-radius: 14px;
+  padding: 10px 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  transition:
+    transform 140ms ease,
+    background 140ms ease,
+    border-color 140ms ease,
+    box-shadow 140ms ease,
+    filter 140ms ease;
+}
+
+/* układ przycisków obok siebie */
+.news button:nth-of-type(1),
+.news button:nth-of-type(2) {
+  width: 100%;
+}
+
+.news {
+  /* ostatni rząd na przyciski jako 2 kolumny */
+  grid-template-areas:
+    "title"
+    "desc"
+    "actions";
+}
+
+.news h3 {
+  grid-area: title;
+}
+.news p {
+  grid-area: desc;
+}
+
+/* wrapper na buttons bez zmiany JSX: robimy z nich 2 kolumny */
+.news button {
+  justify-self: stretch;
+}
+
+.news button:first-of-type,
+.news button:last-of-type {
+  /* wstawiamy je do „siatki” 2 kolumn */
+}
+
+.news {
+  /* dodatkowa siatka tylko dla przycisków: trick przez auto-flow */
+  grid-auto-flow: row;
+}
+
+.news button:first-of-type {
+  margin-top: 6px;
+}
+
+.news button {
+  /* gdy są 2 buttony pod rząd, zrobią się 2 kolumny dzięki temu: */
+}
+
+.news {
+  /* zamieniamy kontener w grid z 2 kolumnami dla ostatnich elementów */
+  grid-template-columns: 1fr 1fr;
+}
+
+.news h3,
+.news p {
+  grid-column: 1 / -1;
+}
+
+.news button {
+  grid-column: span 1;
+}
+
+/* hover */
+.news button:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.34);
+  filter: brightness(1.06);
+}
+
+/* active (klik) */
+.news button:active {
+  transform: translateY(0px) scale(0.98);
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+/* focus (klawiatura) */
+.news button:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.16),
+    0 10px 22px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* subtelne różnicowanie LIKE / DISLIKE bez zmiany JSX */
+.news button:first-of-type {
+  background: linear-gradient(
+    135deg,
+    rgba(80, 200, 160, 0.18),
+    rgba(255, 255, 255, 0.08)
+  );
+}
+
+.news button:last-of-type {
+  background: linear-gradient(
+    135deg,
+    rgba(240, 90, 120, 0.18),
+    rgba(255, 255, 255, 0.08)
+  );
+}
+
+.news > span {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  background-color: blueviolet;
+  padding: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

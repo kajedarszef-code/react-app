@@ -1,0 +1,47 @@
+nav {
+  position: fixed;
+  z-index: 5;
+  background-color: #ffffff61;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  font-size: 1.25rem;
+  color: white;
+}
+
+ul > li, ul > li > a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: white;
+}
+
+ul > li:hover {
+  transform: scale(1.1);
+}
+
+span > a > i {
+  font-size: 4rem;
+  color: white;
+}
+
+
+input {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
