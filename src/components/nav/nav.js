@@ -37,22 +37,14 @@ export function Nav() {
           <input placeholder="search" onChange={handleInput}></input>
         </li>
         <li>
-          <Link to="/dashboard">
-            <i className="fa-solid fa-gauge"></i>
-            DASHBOARD
-          </Link>
-        </li>
-        <li>
-          <Link to="/">
-            <i className="fa-solid fa-newspaper"></i>
-            NEWS
-          </Link>
-        </li>
-        <li>
-          <Link to="/users">
-            <i className="fa-solid fa-pizza-slice"></i>
-            USERS
-          </Link>
+          {navLinks.map((link, index) => (
+            <li key={index}>
+              <Link to={link.path}>
+                <i className={link.icon}></i>
+                {link.name}
+              </Link>
+            </li>
+          ))}
         </li>
       </ul>
     </nav>
