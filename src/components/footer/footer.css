@@ -1,0 +1,30 @@
+
+footer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    padding-top: 1.5rem ;
+}
+
+.footer-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    
+    
+}
+
+.footer-item:hover{
+    transform: scale(1.1);
+}
+
+footer.dark {
+    background-color: black;
+}
+
+footer.dark i {
+    color: white;
+}

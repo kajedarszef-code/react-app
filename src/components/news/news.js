@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 export function News({ title, description }) {
   const [likes, setLikes] = useState(0);
+  
 
   const handleClick = (name) => {
     alert(`${name}, kliknięto przycisk`);
